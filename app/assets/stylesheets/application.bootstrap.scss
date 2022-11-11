@@ -1,0 +1,6 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+@function opaque($background, $foreground) {
+    @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
+}
