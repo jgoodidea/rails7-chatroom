@@ -2,12 +2,10 @@
 
 one:
   user: one
-  room: MyString
-  references: MyString
+  room: one
   body: MyText
 
 two:
   user: two
-  room: MyString
-  references: MyString
+  room: two
   body: MyText
