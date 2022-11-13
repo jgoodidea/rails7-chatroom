@@ -5,6 +5,8 @@ class RoomsController < ApplicationController
     @room = Room.new
     @rooms = Room.public_rooms
 
+    @single_room = Room.find(params[:id])
+
     @users = User.all_except(current_user)
   end
 
