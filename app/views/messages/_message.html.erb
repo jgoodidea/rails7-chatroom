@@ -2,5 +2,5 @@
     <% unless message.room.is_private %>
         <h6 class="name"> <%= message.user.email %> </h6>
     <% end %>
-    <%= message.content %>
+    <%= message.body %>
 </div>
