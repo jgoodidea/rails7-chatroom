@@ -11,6 +11,14 @@ class User < ApplicationRecord
 
   after_commit :add_default_avatar, on: %i[create update]
 
+  def avatar_thumbnail
+    avatar.variant(resize_to_limit: [150, 150]).processed
+  end
+
+  def chat_thumbnail
+    avatar.variant(resize_to_limit: [50, 50]).processed
+  end
+
   private
 
   def add_default_avatar
