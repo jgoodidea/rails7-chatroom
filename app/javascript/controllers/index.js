@@ -4,14 +4,17 @@
 
 import { application } from "./application"
 
+import AutoclickController from "./autoclick_controller"
+application.register("autoclick", AutoclickController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import MessagePreviewController from "./message_preview_controller"
+application.register("message-preview", MessagePreviewController)
 
 import ResetFormController from "./reset_form_controller"
 application.register("reset-form", ResetFormController)
 
 import ScrollController from "./scroll_controller"
 application.register("scroll", ScrollController)
-
-import MessagePreviewController from "./message_preview_controller"
-application.register("message-preview", MessagePreviewController)
