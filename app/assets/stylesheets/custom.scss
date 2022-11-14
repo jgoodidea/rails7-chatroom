@@ -8,8 +8,8 @@ body {
 }
 #single_room {
     height: calc(100vh - 150px);
-    overflow-x: hidden;
-    overflow-y: scroll;
+    // overflow-x: hidden;
+    // overflow-y: scroll;
 }
 #messages {
     height: calc(100vh - 150px);
@@ -31,7 +31,7 @@ body {
     height: 100vh;
     margin-right: 0px !important;
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 .msg-content {
     width: 80%;
@@ -44,6 +44,6 @@ body {
     padding: 5px;
     border-radius: 10px;
     margin-bottom: 10px;
-    background-color: #555;
+    background-color: #555555;
     padding: 10px;
 }

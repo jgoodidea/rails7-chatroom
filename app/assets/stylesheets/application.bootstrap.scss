@@ -1,7 +1,7 @@
-@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap-reboot';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
-@function opaque($background, $foreground) {
-    @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
-}
+// @function opaque($background, $foreground) {
+//     @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100%);
+// }
 @import './custom.scss';
