@@ -12,3 +12,6 @@ application.register("reset-form", ResetFormController)
 
 import ScrollController from "./scroll_controller"
 application.register("scroll", ScrollController)
+
+import MessagePreviewController from "./message_preview_controller"
+application.register("message-preview", MessagePreviewController)
