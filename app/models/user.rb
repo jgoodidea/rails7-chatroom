@@ -33,7 +33,7 @@ class User < ApplicationRecord
     when 'away'
       'bg-warning'
     when 'offline'
-      'bg-danger'
+      'bg-dark'
     else
       'bg-dark'
     end
