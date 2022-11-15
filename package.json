@@ -9,7 +9,8 @@
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
     "esbuild": "^0.15.13",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "stimulus-use": "^0.51.0"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
