@@ -7,6 +7,9 @@ import { application } from "./application"
 import AutoclickController from "./autoclick_controller"
 application.register("autoclick", AutoclickController)
 
+import DebounceController from "./debounce_controller"
+application.register("debounce", DebounceController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

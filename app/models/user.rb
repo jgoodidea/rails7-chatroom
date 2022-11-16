@@ -32,6 +32,10 @@ class User < ApplicationRecord
     broadcast_replace_to 'user_status', partial: 'users/status', user: self
   end
 
+  def has_joined_room(room)
+    joined_rooms.include?(room)
+  end
+
   def status_to_css
     case status
     when 'online'
