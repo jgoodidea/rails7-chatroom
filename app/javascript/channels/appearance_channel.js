@@ -68,7 +68,10 @@ consumer.subscriptions.create("AppearanceChannel", {
       clearTimeout(timer);
       const timeInSeconds = 5;
       const milliseconds = 1000;
-      const timeInMilliseconds = timeInSeconds * milliseconds;
+      const timeInMinutes = timeInSeconds * 60 * milliseconds;
+      // Number of minutes to be delayed
+      const numberOfMinutes = 5;
+      const timeInMilliseconds = timeInMinutes * numberOfMinutes;
 
       timer = setTimeout(this.away.bind(this), timeInMilliseconds);
     }
