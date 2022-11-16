@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
 
   def index
     @room = Room.new
-    @joined_rooms = current_user.joined_rooms
+    @joined_rooms = current_user.joined_rooms.order('last_message_at DESC')
     @rooms = search_rooms
 
     @users = User.all_except(current_user)
@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
     @single_room = Room.find(params[:id])
 
     @room = Room.new
-    @joined_rooms = current_user.joined_rooms
+    @joined_rooms = current_user.joined_rooms.order('last_message_at DESC')
     @rooms = search_rooms
 
     @message = Message.new
