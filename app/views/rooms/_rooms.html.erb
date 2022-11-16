@@ -1,5 +1,5 @@
-<%= turbo_frame_tag dom_id(room) do %>
-    <%= render 'rooms/room_container',
+<% rooms.each do |room| %>
+    <%= render 'rooms/room',
         room: room,
         last_message: room.latest_message,
         user: user %>
