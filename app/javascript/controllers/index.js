@@ -19,5 +19,11 @@ application.register("message-preview", MessagePreviewController)
 import ResetFormController from "./reset_form_controller"
 application.register("reset-form", ResetFormController)
 
+import RoomListController from "./room_list_controller"
+application.register("room-list", RoomListController)
+
 import ScrollController from "./scroll_controller"
 application.register("scroll", ScrollController)
+
+import UserListController from "./user_list_controller"
+application.register("user-list", UserListController)
