@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="ms-2 me-auto username">
-                <%= current_user.email %>
+                <%= link_to current_user.email, current_user, class: "msg-role-#{current_user.role}" %>
             </div>
         </li>
 

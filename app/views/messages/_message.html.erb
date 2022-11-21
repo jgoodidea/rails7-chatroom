@@ -3,7 +3,9 @@
         <div class="d-flex align-items-center">
             <%= image_tag(message.user.chat_thumbnail, class: 'chat_pfp') %>
             <div>
-                <h6 class="name"> <%= message.user.email %> </h6>
+                <h6 class="name msg-role-<%= message.user.role %>">
+                    <%= link_to message.user.email, message.user, class: "msg-role-#{message.user.role}" %>
+                </h6>
                 <p class="time"> <%= time_ago_in_words(message.created_at) %> ago</p>
             </div>
         </div>
