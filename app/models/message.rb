@@ -5,6 +5,7 @@ class Message < ApplicationRecord
   has_many_attached :attachments, dependent: :destroy
 
   after_create_commit do
+    notify_recipients
     update_parent_room
     broadcast_append_later_to room
   end
@@ -29,5 +30,17 @@ class Message < ApplicationRecord
 
   def update_parent_room
     room.update(last_message_at: Time.now)
+  end
+
+  private
+
+  def notify_recipients
+    users_in_room = room.joined_users
+    users_in_room.each do |user|
+      next if user.eql?(self.user)
+
+      notification = MessageNotification.with(message: self, room:)
+      notification.deliver_later(user)
+    end
   end
 end

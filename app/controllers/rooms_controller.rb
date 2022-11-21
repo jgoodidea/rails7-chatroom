@@ -28,6 +28,7 @@ class RoomsController < ApplicationController
     @messages = messages.reverse
 
     @users = User.all_except(current_user)
+    set_notifications_to_read
     render 'index'
   end
 
@@ -65,5 +66,10 @@ class RoomsController < ApplicationController
 
   def set_status
     current_user.update!(status: User.statuses[:onine]) if current_user
+  end
+
+  def set_notifications_to_read
+    notifications = @single_room.notifications_as_room.where(recipient: current_user).unread
+    notifications.update_all(read_at: Time.zone.now)
   end
 end
