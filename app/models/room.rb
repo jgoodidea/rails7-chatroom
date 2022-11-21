@@ -5,8 +5,10 @@ class Room < ApplicationRecord
     after_update_commit { broadcast_if_public }
     has_many :messages
     has_many :participants, dependent: :destroy
-    has_many :joinable, dependent: :destroy
+    has_many :joinables, dependent: :destroy
     has_many :joined_users, through: :joinables, source: :user
+
+    has_noticed_notifications model_name: 'Notification'
 
     def broadcast_if_public
         broadcast_latest_message
