@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <%= link_to user.email, user, class: "ms-2 me-auto username", data: {
+                <%= link_to user.email, user, class: "ms-2 me-auto username msg-role-#{ user.role }", data: {
                     turbo: 'false'
                 } %>
             </div>
