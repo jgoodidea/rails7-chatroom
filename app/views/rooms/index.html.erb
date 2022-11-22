@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "appearance_channel" %>
 <div id="appearance_channel"></div>
-
+<%= audio_tag "aim.wav", id: "audio-tag" %>
 <%= turbo_frame_tag "message_error" do %>
     <%= render 'shared/message_error' %>
 <% end %>
