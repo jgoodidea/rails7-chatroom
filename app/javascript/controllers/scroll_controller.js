@@ -23,6 +23,8 @@ export default class extends Controller {
     if (messages.scrollTop > upperScrollThreshold) {
       messages.scrollTop = messages.scrollHeight - messages.clientHeight;
     }
+    const audio_tag = document.getElementById("audio-tag");
+    audio_tag.play();
   }
   resetScrollWithoutThreshold(messages) {
     messages.scrollTop = messages.scrollHeight - messages.clientHeight;
