@@ -4,6 +4,8 @@ class Message < ApplicationRecord
   before_create :confirm_participant
   has_many_attached :attachments, dependent: :destroy
 
+  validate :validate_attachment_filetypes
+
   after_create_commit do
     notify_recipients
     update_parent_room
@@ -34,6 +36,16 @@ class Message < ApplicationRecord
   end
 
   private
+
+  def validate_attachment_filetypes
+    return unless attachments.attached?
+
+    attachments.each do |attachment|
+      unless attachment.content_type.in?(%w[image/jpeg image/png image/gif video/mp4 video/mpeg audio/vnd.wave audio/mp3])
+        errors.add(:attachments, 'must be a JPEG, PNG, GIF, MP4, MP3, or WAV file')
+      end
+    end
+  end
 
   def notify_recipients
     users_in_room = room.joined_users
