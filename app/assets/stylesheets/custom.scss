@@ -121,3 +121,20 @@ body {
 .new-room-button {
     border-radius: 0px !important;
 }
+
+#message-preview-card {
+    background: #222;
+    border-radius: 0px;
+}
+#message-preview {
+    animation: fadeIn 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
