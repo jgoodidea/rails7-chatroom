@@ -16,5 +16,18 @@ module RoomsHelper
         user = [user1, user2].sort
         "private_#{user[0].id}_#{user[1].id}"
     end
+
+    def markdown(text)
+        options = {
+            hard_wrap: true,
+            link_attributes: { rel: 'nofollow', target: '_blank' },
+            fenced_code_blocks: true,
+            no_intra_emphasis: true,
+            autolink: true,
+            quote: true
+        }
+        markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
+        sanitize(markdown.render(text))
+    end
   end
   

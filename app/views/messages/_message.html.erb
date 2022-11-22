@@ -10,7 +10,7 @@
             </div>
         </div>
         <div>
-            <%= message.body %>
+            <%= markdown(message.body) %>
         </div>
         <%= render "messages/attachments", message: message %>
     </div>
