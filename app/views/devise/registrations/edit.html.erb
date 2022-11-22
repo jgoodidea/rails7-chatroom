@@ -4,16 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%
-=begin%>
- <%= image_tag(resource.avatar_thumbnail) if resource.avatar.attached? %> 
-<%
-=end%>
-    <% if resource.avatar.attached? %>
-      <%= image_tag resource.avatar_thumbnail %>
-    <% else %>
-      <%= image_tag('/assets/default_avatar.jpg', style: "width: 150px; height: 150px;") %>
-    <% end %>
+    <%= image_tag(resource.avatar_thumbnail) if resource.avatar.attached? %>
   </div>
   <div class="field">
     <%= f.file_field :avatar %>
@@ -21,9 +12,12 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
   </div>
-
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, required: true %>
+  </div>
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -44,7 +38,7 @@
 
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", required: true %>
   </div>
 
   <div class="actions">

@@ -6,13 +6,16 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 james = User.create(email: 'james@email.com',
+                    username: 'James',
                     password: 'abcdef',
                     password_confirmation: 'abcdef',
                     role: 'admin')
-User.create(email: 'jean@email.com',
+jean = User.create(email: 'jean@email.com',
+            username: 'Jean',
             password: 'abcdef',
             password_confirmation: 'abcdef')
-User.create(email: 'ravi@email.com',
+ravi = User.create(email: 'ravi@email.com',
+            username: 'Ravi',
             password: 'abcdef',
             password_confirmation: 'abcdef')
 james.joined_rooms << Room.create(name: 'General', is_private: false)

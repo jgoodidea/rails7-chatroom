@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :joinables, dependent: :destroy
   has_many :joined_rooms, through: :joinables, source: :room
+  validates_uniqueness_of :username, required: true, case_sensitive: false
 
   has_many :notifications, dependent: :destroy, as: :recipient
 
