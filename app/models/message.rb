@@ -8,6 +8,7 @@ class Message < ApplicationRecord
     notify_recipients
     update_parent_room
     broadcast_append_later_to room
+    broadcast_to_home_page
   end
 
   def chat_attachment(index)
@@ -41,6 +42,20 @@ class Message < ApplicationRecord
 
       notification = MessageNotification.with(message: self, room:)
       notification.deliver_later(user)
+    end
+  end
+
+  def broadcast_to_home_page
+    if !self.room.is_private
+      broadcast_prepend_later_to 'public_messages',
+        target: 'public_messages',
+        partial: 'messages/message_preview',
+        locals: { message: self }
+      
+      message_to_remove = Message.where(room: Room.public_rooms).order(created_at: :desc).fifth
+
+      broadcast_remove_to 'public_messages',
+        target: message_to_remove
     end
   end
 end
