@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="ms-2 me-auto username">
-                <%= link_to current_user.email, current_user, class: "msg-role-#{current_user.role}" %>
+                <%= link_to current_user.username, current_user, class: "msg-role-#{current_user.role}" %>
             </div>
         </li>
 
@@ -40,7 +40,7 @@
         <% if @single_room %>
             <div id="single_room">
                 <h4 class="text-center">
-                    <%= @user&.email || @single_room.name %>
+                    <%= @user&.username || @single_room.name %>
                 </h4>
                 <%= turbo_stream_from @single_room %>
                 <div id="messages" data-controller="scroll">

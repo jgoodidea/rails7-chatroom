@@ -3,7 +3,7 @@
         <div class="card" id="message-preview-card">
             <div class="card-body row">
                 <div class="col-8">
-                    <%= content_tag(:p, message.user.email, class: "msg-role-#{message.user.role}") %>
+                    <%= content_tag(:p, message.user.username, class: "msg-role-#{message.user.role}") %>
                 </div>
                 <div class="col-4">
                     <%= link_to message.room.name, room_path(message.room), data: { turbo: "false" } %>
