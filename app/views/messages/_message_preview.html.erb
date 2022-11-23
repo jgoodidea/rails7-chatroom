@@ -8,7 +8,7 @@
                 <div class="col-4">
                     <%= link_to message.room.name, room_path(message.room), data: { turbo: "false" } %>
                 </div>
-                <%= content_tag(:div, message.body, style: "color: #fff;") %>
+                <%= content_tag(:div, message.body.html_safe, style: "color: #fff;") %>
             </div>
         </div>
     </div>

@@ -96,7 +96,7 @@
 }
 
 .message-image-container {
-    width: 150px;
+    width: auto;
     height: 150px;
     margin: 0;
     padding: 0;
@@ -168,4 +168,12 @@
     100% {
         opacity: 0;
     }
+}
+
+.microphone-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.microphone-icon:hover {
+    opacity: 0.75;
 }
