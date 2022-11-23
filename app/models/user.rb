@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   enum role: %i[user admin]
 
-  enum status: %i[offline away online]
+  enum status: %i[offline away online dnd]
 
   after_commit :add_default_avatar, on: %i[create update]
 
@@ -47,6 +47,8 @@ class User < ApplicationRecord
       'bg-warning'
     when 'offline'
       'bg-dark'
+    when 'dnd'
+      'bg-danger'
     else
       'bg-dark'
     end
