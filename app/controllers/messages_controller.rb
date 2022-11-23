@@ -1,10 +1,14 @@
 class MessagesController < ApplicationController
+    include MessagesHelper
     def create
         @message = current_user.messages.build(
             body: msg_params[:body],
             room_id: params[:room_id],
             attachments: msg_params[:attachments]
             )
+
+        @message.body = parse_at_mentions(@message.body)
+
         unless @message.save
             render turbo_stream:
                 turbo_stream.update('message_error',
