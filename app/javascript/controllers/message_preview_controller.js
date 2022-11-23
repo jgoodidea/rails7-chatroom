@@ -1,4 +1,5 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
+import { DirectUpload } from "@rails/activestorage";
 
 /**
  * This controller is responsible for displaying the message preview(s).
@@ -6,7 +7,9 @@ import { Controller } from "@hotwired/stimulus"
  */
 
 export default class extends Controller {
-    connect() {}
+    connect() {
+        this.audio();
+    }
     /**
      * Creates the preview panel displayed above the message input.
      * This panel is used to display the file(s) that is/are being uploaded.
@@ -74,6 +77,8 @@ export default class extends Controller {
             case "audio/mpeg":
             case "audio/mp3":
             case "audio/wav":
+            case "audio/ogg":
+            case "audio/x-wav":
                 element = this.createAudioElement(cancelFunction);
                 break;
             default:
@@ -215,4 +220,82 @@ export default class extends Controller {
         let preview = document.getElementById("attachment-previews");
         preview.classList.add("d-none");
     }
+
+    audio() {
+        let record = document.getElementById('audio-record-button');
+        let messageAttachments = document.getElementById('message_attachments');
+
+        let recording = false;
+
+        if (navigator.mediaDevices.getUserMedia) {
+            const constraints = { audio: true };
+            let chunks = [];
+            let onSuccess = function (stream) {
+                const mediaRecorder = new MediaRecorder(stream);
+
+                record.onclick = function (event) {
+                  event.preventDefault();
+                  if (recording) {
+                        mediaRecorder.stop();
+                        record.style.color = "";
+                    } else {
+                        mediaRecorder.start();
+                        record.style.color = "red";
+                    }
+                    recording = !recording;
+                };
+
+                mediaRecorder.onstop = function (event) {
+                    const audioType = "audio/ogg; codecs=opus";
+                    const blob = new Blob(chunks, { type: audioType });
+                    chunks = [];
+
+                    let file = new File([blob], "audio-message.ogg", {
+                        type: audioType,
+                        lastModified: new Date().getTime(),
+                    });
+                    let container = new DataTransfer();
+                    container.items.add(file);
+                    uploadFile(file);
+                    messageAttachments.files = container.files;
+                    messageAttachments.dispatchEvent(new Event("change"));
+                };
+
+                mediaRecorder.ondataavailable = function (e) {
+                    chunks.push(e.data);
+                };
+            };
+            let onError = function (err) {
+                console.log("The following error occured: " + err);
+            };
+
+            navigator.mediaDevices.getUserMedia(constraints).then(onSuccess, onError);
+        } else {
+            console.log("getUserMedia not supported on your browser!");
+        }
+    }
 }
+
+const uploadFile = (file) => {
+    // Your form needs the file_field direct_upload: true, which
+    // provides data-direct-upload-url
+    const input = document.getElementById("message_attachments");
+    const url = input.dataset.directUploadUrl;
+    const upload = new DirectUpload(file, url);
+  
+    upload.create((error, blob) => {
+        if (error) {
+            // idk, do something
+        } else {
+            // Add an appropriately-named hidden input to the form with a
+            //  value of blob.signed_id so that the blob ids will be
+            //  transmitted in the normal upload flow
+            const hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("value", blob.signed_id);
+            hiddenField.name = input.name;
+            let messageForm = document.getElementById("message-form");
+            messageForm.appendChild(hiddenField);
+        }
+    });
+};
