@@ -9,6 +9,8 @@
     "@rails/activestorage": "^7.0.4",
     "bootstrap": "^5.2.2",
     "bootstrap-icons": "^1.9.1",
+    "chart.js": "^4.0.1",
+    "chartkick": "^4.2.0",
     "esbuild": "^0.15.13",
     "sass": "^1.56.1",
     "stimulus-use": "^0.51.0"

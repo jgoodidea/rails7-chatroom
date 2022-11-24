@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <%= link_to "Admin", admin_dashboard_path, class: "nav-link" if current_user&.admin? %>
                 </li>
             </ul>
             <form class="d-flex" role="search">
