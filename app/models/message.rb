@@ -35,6 +35,10 @@ class Message < ApplicationRecord
     room.update(last_message_at: Time.now)
   end
 
+  def messages_this_month
+    messages = Message.group_by_day(:created_at, range: 1.month.ago..Time.now).count
+  end
+
   private
 
   def validate_attachment_filetypes

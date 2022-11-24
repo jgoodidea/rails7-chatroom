@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/dashboard'
   # get 'users/show'
   resources :rooms do
     resources :messages
