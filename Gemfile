@@ -86,3 +86,11 @@ gem "redcarpet", "~> 3.5"
 gem "chartkick", "~> 4.2"
 
 gem "groupdate", "~> 6.1"
+
+gem "capistrano", "~> 3.17"
+
+gem "capistrano-rails", "~> 1.6"
+
+gem "capistrano-passenger", "~> 0.2.1"
+
+gem "capistrano-rbenv", "~> 2.2"
