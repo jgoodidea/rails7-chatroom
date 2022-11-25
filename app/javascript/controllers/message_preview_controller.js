@@ -8,11 +8,12 @@ import { DirectUpload } from "@rails/activestorage";
 
 export default class extends Controller {
     connect() {
+        var that = this;
         if (document.readyState == "complete") {
-            this.audio();
+            that.audio();
         }else{
             window.addEventListener("load", function() {
-                this.audio();
+                that.audio();
             }, false);
         }
         // this.audio();
