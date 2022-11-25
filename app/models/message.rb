@@ -4,6 +4,8 @@ class Message < ApplicationRecord
   before_create :confirm_participant
   has_many_attached :attachments, dependent: :destroy
 
+  @@not_resizables = %w[image/gif]
+
   validate :validate_attachment_filetypes
 
   after_create_commit do
@@ -16,6 +18,7 @@ class Message < ApplicationRecord
   def chat_attachment(index)
     target = attachments[index]
     return unless attachments.attached?
+    return target if @@not_resizables.include?(target.content_type)
 
     if target.image?
       target.variant(resize_to_limit: [150, 150]).processed
