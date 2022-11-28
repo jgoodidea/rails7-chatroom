@@ -8,15 +8,7 @@ import { DirectUpload } from "@rails/activestorage";
 
 export default class extends Controller {
     connect() {
-        var that = this;
-        if (document.readyState == "complete") {
-            that.audio();
-        }else{
-            window.addEventListener("load", function() {
-                that.audio();
-            }, false);
-        }
-        // this.audio();
+        this.audio();
     }
     /**
      * Creates the preview panel displayed above the message input.
