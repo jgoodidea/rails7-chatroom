@@ -9,8 +9,11 @@ gem "rails", "~> 7.0.4"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
+# # Use sqlite3 as the database for Active Record
+# gem "sqlite3", "~> 1.4"
+
+# Use pg as the database for Active Record
+gem 'pg', '~> 1.1'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -86,3 +89,11 @@ gem "redcarpet", "~> 3.5"
 gem "chartkick", "~> 4.2"
 
 gem "groupdate", "~> 6.1"
+
+gem "capistrano", "~> 3.17"
+
+gem "capistrano-rails", "~> 1.6"
+
+gem "capistrano-passenger", "~> 0.2.1"
+
+gem "capistrano-rbenv", "~> 2.2"
