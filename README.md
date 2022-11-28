@@ -1,24 +1,6 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a real chat room for Ruby on Rails. It includes public and private chat rooms with functionalities for text messages, audio recordings, file messages, unread notifications and so on.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In this project I used and learnt many ruby gems such as devise, noticed, pagy, chartkick, and capistrano.
+Mainly I developed skills to utilize stimulus and turbo streams.
